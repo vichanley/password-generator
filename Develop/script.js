@@ -48,6 +48,7 @@ var passwordCriteria = function () {
 
   if (userInput.length > 0) {
     console.log ("User input is " + userInput);
+    return userInput;
   }
 
   else {
@@ -57,28 +58,23 @@ var passwordCriteria = function () {
 
 }
 
-var generatePassword = function () {
+//Generating final password with criteria set 
+var generatePassword = function(){
 
-  var passwordLength = prompt("Please enter a password length of at least 8 characters and no more than 128 characters.: ");
+  var passwordLength = prompt("Please enter a length of at least 8 characters and no more than 128 characters for your password:");
 
-  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128 ){
     return generatePassword();
   }
 
-  // else {
-  //   prompt("Please enter a password length of at least 8 characters and no more than 128 characters.: ");
-  // }
-
-  var setCriteria = passwordCriteria ();
-  var generatedPassword = "";
+  var setCriteria = passwordCriteria();
+  var finalPassword = "";
 
   for (var i = 0, n = setCriteria.length; i < passwordLength; i++) {
-    generatedPassword += setCriteria[Math.floor(Math.random() * n)];
+    finalPassword += setCriteria[Math.floor(Math.random() * n)];
   }
 
-  console.log("Here is your generated password " + generatedPassword);
-  return generatedPassword;
-
+  return finalPassword;
 }
 
 //Get references to the #generate element
