@@ -4,9 +4,9 @@
 A password generator that will randomly generate a password that meets certain criteria to provide greater safety. 
 
 # Built With
-HTML
-CSS
-Javascript
+* HTML
+* CSS
+* Javascript
 
 # Website
 https://vichanley.github.io/password-generator/
