@@ -1,17 +1,6 @@
 // Assignment code here
 var passwordCriteria = function () {
 
-//Prompting user to choose length of password 
-  var passwordLength = prompt("Please enter a password length of at least 8 characters and no more than 128 characters.: ");
-
-  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
-    return generatePassword();
-  }
-
-  else {
-    prompt("Please enter a password length of at least 8 characters and no more than 128 characters.: ");
-  }
-
   //Prompting user to choose character types to include in password 
   var lowerChars = confirm("Would you like to include lowercase characters in your password?");
 
@@ -68,18 +57,40 @@ var passwordCriteria = function () {
 
 }
 
+var generatePassword = function () {
 
-// Get references to the #generate element
+  var passwordLength = prompt("Please enter a password length of at least 8 characters and no more than 128 characters.: ");
+
+  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+    return generatePassword();
+  }
+
+  // else {
+  //   prompt("Please enter a password length of at least 8 characters and no more than 128 characters.: ");
+  // }
+
+  var setCriteria = passwordCriteria ();
+  var generatedPassword = "";
+
+  for (var i = 0, n = setCriteria.length; i < passwordLength; i++) {
+    generatedPassword += setCriteria[Math.floor(Math.random() * n)];
+  }
+
+  console.log("Here is your generated password " + generatedPassword);
+  return generatedPassword;
+
+}
+
+//Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+//Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
-// Add event listener to generate button
+//Add event listener to generate button 
 generateBtn.addEventListener("click", writePassword);
